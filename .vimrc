@@ -2,7 +2,7 @@ syntax on
 set nowrap
 set encoding=utf8
 
-let MY_HOME='/home/pvnick'
+let MY_HOME='/home/paul'
 
 filetype plugin indent on
 " show existing tab with 4 spaces width
@@ -31,36 +31,42 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 
 " Generic programming plugins
-Plugin 'Townk/vim-autoclose'
+" Plugin 'Townk/vim-autoclose'
 Plugin 'vim-syntastic/syntastic'
-
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'jistr/vim-nerdtree-tabs'
-" Plugin 'Shougo/neocomplete.vim'
-" Plugin 'davidhalter/jedi-vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
-Plugin 'Valloric/YouCompleteMe'
-
-let g:nerdtree_tabs_open_on_console_startup=1
-map <Leader>n <plug>NERDTreeTabsToggle<CR>
-
+Plugin 'zchee/deoplete-jedi'
+Plugin 'Shougo/vimproc.vim'
+Plugin 'idanarye/vim-vebugger'
+Plugin 'hkupty/iron.nvim'
 
 " Theming
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tomasr/molokai'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" Debugger commands
+let g:vebugger_leader = 1
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Color scheme
-Plugin 'tomasr/molokai'
 :colorscheme molokai
 let g:molokai_original = 1
-
-call vundle#end()            " required
-filetype plugin indent on    " required
 
 " Nerdtree options
 autocmd vimenter * NERDTree " Automatically open Nerdtree
@@ -81,3 +87,13 @@ let g:syntastic_check_on_wq = 0
 
 " Python options
 let python_highlight_all=1
+
+" Remap pane navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Paste and nopaste shortcuts
+nnoremap <C-P> :set paste<CR>
+nnoremap <C-N><C-P> :set nopaste<CR>
